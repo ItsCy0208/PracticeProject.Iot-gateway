@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/dev/iot-gateway/iot-gateway/out/build/x64-debug/cmake_install.cmake",
+		"C:/dev/iot-gateway/iot-gateway/out/build/x64-debug/iot-gateway/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

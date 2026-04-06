@@ -1,0 +1,5 @@
+C:/dev/iot-gateway/iot-gateway/out/build/x64-debug/CMakeFiles/edit_cache.dir
+C:/dev/iot-gateway/iot-gateway/out/build/x64-debug/CMakeFiles/rebuild_cache.dir
+C:/dev/iot-gateway/iot-gateway/out/build/x64-debug/iot-gateway/CMakeFiles/iot-gateway.dir
+C:/dev/iot-gateway/iot-gateway/out/build/x64-debug/iot-gateway/CMakeFiles/edit_cache.dir
+C:/dev/iot-gateway/iot-gateway/out/build/x64-debug/iot-gateway/CMakeFiles/rebuild_cache.dir

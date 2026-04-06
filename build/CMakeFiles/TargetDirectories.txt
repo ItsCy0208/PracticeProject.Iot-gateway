@@ -1,0 +1,5 @@
+/mnt/c/dev/iot-gateway/iot-gateway/build/CMakeFiles/edit_cache.dir
+/mnt/c/dev/iot-gateway/iot-gateway/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/dev/iot-gateway/iot-gateway/build/iot-gateway/CMakeFiles/iot-gateway.dir
+/mnt/c/dev/iot-gateway/iot-gateway/build/iot-gateway/CMakeFiles/edit_cache.dir
+/mnt/c/dev/iot-gateway/iot-gateway/build/iot-gateway/CMakeFiles/rebuild_cache.dir
