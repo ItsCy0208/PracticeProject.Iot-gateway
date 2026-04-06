@@ -1,1 +1,0 @@
-/usr/bin/c++ "CMakeFiles/iot-gateway.dir/iot-gateway.cpp.o" -o iot-gateway  -lmosquitto 
