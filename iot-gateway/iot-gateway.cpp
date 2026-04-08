@@ -3,6 +3,7 @@
 #include <iostream>
 #include <mosquitto.h>
 #include <thread>
+
 void on_connect(struct mosquitto* mosq, void* obj, int rc) {
     if (rc == 0) {
         std::cout << "[gateway] connected to broker" << std::endl;
