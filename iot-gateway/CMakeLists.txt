@@ -10,6 +10,6 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
 endif()
 
 find_package(Threads REQUIRED)
-target_link_libraries(iot-gateway PRIVATE mosquitto Threads::Threads)
+target_link_libraries(iot-gateway PRIVATE cjson mosquitto iniparser Threads::Threads)
 
 # TODO: 如有需要，请添加测试并安装目标。
