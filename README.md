@@ -21,7 +21,9 @@ iot-gateway/
 │  └─ iot-gateway.h
 └─ docs/
    ├─ noteday2.md
-   └─ noteday3.md
+   ├─ noteday3.md
+   ├─ noteday4.md
+   └─ noteday5.md
 ```
 
 ## Environment
