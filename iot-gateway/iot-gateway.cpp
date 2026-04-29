@@ -8,6 +8,8 @@
 
 using json = nlohmann::json;
 
+bool on_message_err_temp(const std::string& payload, std::string& device, double& temp);
+
 void on_connect(struct mosquitto* mosq, void* obj, int rc) {
     if (rc == 0) {
         std::cout << "[gateway] connected to broker" << std::endl;
@@ -24,27 +26,57 @@ void on_message(struct mosquitto* mosq, void* obj, const struct mosquitto_messag
     std::cout << "[gateway] topic=" << msg->topic
               << " payload=" << payload << std::endl;
 
+              std::string device = "";
+              double temp = 0.0;
+              bool result = false;
+              result = on_message_err_temp(payload,device,temp);
+              if(result==false){
+                return;
+              }
+              std::cout << "[gateway] parsed device=" << device << " temp=" << temp << std::endl;
+}
+
+bool on_message_err_temp(const std::string& payload,std::string& device,double& temp){
+
+    try {
+        const json data = json::parse(payload);
+        if (!data.contains("device") || !data["device"].is_string()) {
+            std::cout << "[gateway][error] missing/invalid field: device" << std::endl;
+            return false;
+        }
+        if (!data.contains("temp") || !data["temp"].is_number()) {
+            std::cout << "[gateway][error] missing/invalid field: temp" << std::endl;
+            return false;
+        }
+        device = data["device"].get<std::string>();
+        temp = data["temp"].get<double>();
+    } catch (const std::exception& e) {
+        std::cout << "[gateway][error] invalid json: " << e.what() << std::endl;
+        return false;
+    }
+    return true;
+}
+
+
+
+/*bool on_message_err_temp(const std::string& payload){
     try {
         const json data = json::parse(payload);
 
         if (!data.contains("device") || !data["device"].is_string()) {
             std::cout << "[gateway][error] missing/invalid field: device" << std::endl;
-            return;
+            return false;
         }
         if (!data.contains("temp") || !data["temp"].is_number()) {
             std::cout << "[gateway][error] missing/invalid field: temp" << std::endl;
-            return;
+            return false;
         }
-
-        const std::string device = data["device"].get<std::string>();
-        const double temp = data["temp"].get<double>();
-
-        std::cout << "[gateway] parsed device=" << device
-                  << " temp=" << temp << std::endl;
+        return true;
     } catch (const std::exception& e) {
         std::cout << "[gateway][error] invalid json: " << e.what() << std::endl;
+        return false;
     }
-}
+}*/
 
 int main() {
     mosquitto_lib_init();
