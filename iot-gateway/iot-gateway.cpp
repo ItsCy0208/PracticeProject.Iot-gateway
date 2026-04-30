@@ -8,7 +8,7 @@
 
 using json = nlohmann::json;
 
-bool on_message_err_temp(const std::string& payload, std::string& device, double& temp);
+bool parse_and_validate_json(const std::string& payload, std::string& device, double& temp);
 
 void on_connect(struct mosquitto* mosq, void* obj, int rc) {
     if (rc == 0) {
@@ -29,14 +29,14 @@ void on_message(struct mosquitto* mosq, void* obj, const struct mosquitto_messag
               std::string device = "";
               double temp = 0.0;
               bool result = false;
-              result = on_message_err_temp(payload,device,temp);
+              result = parse_and_validate_json(payload,device,temp);
               if(result==false){
                 return;
               }
               std::cout << "[gateway] parsed device=" << device << " temp=" << temp << std::endl;
 }
 
-bool on_message_err_temp(const std::string& payload,std::string& device,double& temp){
+bool parse_and_validate_json(const std::string& payload,std::string& device,double& temp){
 
     try {
         const json data = json::parse(payload);
